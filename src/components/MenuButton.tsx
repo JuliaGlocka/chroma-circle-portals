@@ -9,6 +9,7 @@ interface MenuButtonProps {
   angle: number;
   distance: number;
   onClick: () => void;
+  rotation?: number; // Added to counter-rotate the button
 }
 
 const MenuButton: React.FC<MenuButtonProps> = ({ 
@@ -16,7 +17,8 @@ const MenuButton: React.FC<MenuButtonProps> = ({
   icon: IconComponent,
   angle, 
   distance,
-  onClick 
+  onClick,
+  rotation = 0 
 }) => {
   // Calculate position based on angle and distance
   const radians = (angle * Math.PI) / 180;
@@ -25,9 +27,10 @@ const MenuButton: React.FC<MenuButtonProps> = ({
   
   return (
     <button
-      className="menu-button w-24 h-24 flex flex-col hover:bg-dark-bg"
+      className="menu-button w-24 h-24 flex flex-col items-center justify-center hover:bg-dark-bg"
       style={{
-        transform: `translate(${x}px, ${y}px)`,
+        transform: `translate(${x}px, ${y}px) rotate(${rotation}deg)`,
+        transition: 'transform 0.5s ease-in-out',
       }}
       onClick={onClick}
       aria-label={label}

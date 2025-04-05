@@ -70,6 +70,23 @@
     @apply font-bold text-xl text-turquoise;
   }
 
+  /* Menu rotation related styles */
+  .menu-items-container {
+    @apply absolute w-full h-full transition-transform duration-500 ease-in-out;
+  }
+
+  .menu-items-container.rotating {
+    @apply transition-transform duration-500 ease-in-out;
+  }
+
+  .rotation-controls {
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 flex space-x-6 z-20 mb-4;
+  }
+
+  .rotate-btn {
+    @apply w-12 h-12 rounded-full bg-dark-card border-2 border-turquoise text-turquoise flex items-center justify-center text-xl hover:bg-dark-bg/80 transition-all hover:scale-110;
+  }
+
   /* For the animated background */
   .code-particle {
     @apply absolute text-xs md:text-sm text-turquoise/20 pointer-events-none select-none font-mono;

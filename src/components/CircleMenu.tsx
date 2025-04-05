@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MenuButton from './MenuButton';
 import Profile from './Profile';
 import { Code, FileCode, Gamepad2 } from 'lucide-react';
@@ -16,6 +16,9 @@ interface CircleMenuProps {
 }
 
 const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
+  const [rotation, setRotation] = useState(0);
+  const [isRotating, setIsRotating] = useState(false);
+  
   // Example projects
   const projects: Record<string, Project[]> = {
     python: [
@@ -39,37 +42,67 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
     }
   };
 
+  // Handle manual rotation
+  const rotateMenu = (direction: 'clockwise' | 'counterclockwise') => {
+    setIsRotating(true);
+    const rotateAmount = direction === 'clockwise' ? 30 : -30;
+    setRotation(prev => prev + rotateAmount);
+    
+    // Stop rotation animation after completed
+    setTimeout(() => {
+      setIsRotating(false);
+    }, 500);
+  };
+
+  // Define button positions with angles
+  const menuItems = [
+    { label: "Python", icon: Code, angle: 270, onClick: () => handleTechnology('python') },
+    { label: "C#", icon: FileCode, angle: 30, onClick: () => handleTechnology('csharp') },
+    { label: "Unity", icon: Gamepad2, angle: 150, onClick: () => handleTechnology('unity') },
+  ];
+
   return (
     <div className="circle-menu animate-float">
       {/* Center profile avatar */}
       <Profile name="DEV" title="Game Developer" />
       
       {/* Menu buttons positioned in a circle */}
-      <MenuButton
-        label="Python"
-        icon={Code}
-        angle={270} // top
-        distance={180}
-        onClick={() => handleTechnology('python')}
-      />
+      <div 
+        className={`menu-items-container ${isRotating ? 'rotating' : ''}`}
+        style={{ transform: `rotate(${rotation}deg)` }}
+      >
+        {menuItems.map((item, index) => (
+          <MenuButton
+            key={index}
+            label={item.label}
+            icon={item.icon}
+            angle={item.angle}
+            distance={180}
+            onClick={item.onClick}
+            rotation={-rotation} // Counter-rotate the buttons to keep text upright
+          />
+        ))}
+      </div>
       
-      <MenuButton
-        label="C#"
-        icon={FileCode}
-        angle={30} // right-bottom
-        distance={180}
-        onClick={() => handleTechnology('csharp')}
-      />
+      {/* Rotation control buttons */}
+      <div className="rotation-controls">
+        <button 
+          onClick={() => rotateMenu('counterclockwise')}
+          className="rotate-btn rotate-left"
+          aria-label="Rotate menu counterclockwise"
+        >
+          ⟲
+        </button>
+        <button 
+          onClick={() => rotateMenu('clockwise')}
+          className="rotate-btn rotate-right"
+          aria-label="Rotate menu clockwise"
+        >
+          ⟳
+        </button>
+      </div>
       
-      <MenuButton
-        label="Unity"
-        icon={Gamepad2}
-        angle={150} // left-bottom
-        distance={180}
-        onClick={() => handleTechnology('unity')}
-      />
-      
-      {/* Optional: you can add an outer ring of elements or effects */}
+      {/* Decorative circles */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-turquoise/20 animate-rotate-slow" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full border border-turquoise/10" />
     </div>
