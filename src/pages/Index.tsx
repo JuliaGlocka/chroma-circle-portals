@@ -1,12 +1,61 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useState } from 'react';
+import CircleMenu from '../components/CircleMenu';
+import ProjectCard from '../components/ProjectCard';
+import CodeBackground from '../components/Background';
+import { Github, Linkedin, Mail } from 'lucide-react';
+
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  technology: string;
+}
 
 const Index = () => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col relative">
+      {/* Animated background */}
+      <CodeBackground />
+      
+      {/* Header with social links */}
+      <header className="fixed top-0 w-full p-4 z-20 flex justify-between items-center">
+        <div className="text-turquoise font-bold text-xl">GameDev Portfolio</div>
+        <div className="flex space-x-4">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-turquoise transition-colors">
+            <Github size={20} />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-turquoise transition-colors">
+            <Linkedin size={20} />
+          </a>
+          <a href="mailto:contact@example.com" className="text-white hover:text-turquoise transition-colors">
+            <Mail size={20} />
+          </a>
+        </div>
+      </header>
+      
+      {/* Main content */}
+      <main className="flex-1 flex items-center justify-center">
+        {selectedProject ? (
+          <div className="circle-menu-container">
+            <ProjectCard 
+              project={selectedProject} 
+              onBack={() => setSelectedProject(null)} 
+            />
+          </div>
+        ) : (
+          <div className="circle-menu-container">
+            <CircleMenu onSelectProject={setSelectedProject} />
+          </div>
+        )}
+      </main>
+      
+      {/* Footer */}
+      <footer className="p-4 text-center text-white/60 text-sm">
+        © 2025 Game Developer Portfolio
+      </footer>
     </div>
   );
 };
