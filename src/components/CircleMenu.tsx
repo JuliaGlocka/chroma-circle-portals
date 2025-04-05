@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import MenuButton from './MenuButton';
 import Profile from './Profile';
 import { Code, FileCode, Gamepad2 } from 'lucide-react';
+import './CircleMenu.css';  // Importujemy plik CSS
 
 interface Project {
   id: string;
@@ -18,7 +18,7 @@ interface CircleMenuProps {
 const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
   const [rotation, setRotation] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
-  
+
   // Example projects
   const projects: Record<string, Project[]> = {
     python: [
@@ -36,7 +36,6 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
   };
 
   const handleTechnology = (tech: 'python' | 'csharp' | 'unity') => {
-    // Select the first project of the technology for demonstration
     if (projects[tech] && projects[tech].length > 0) {
       onSelectProject(projects[tech][0]);
     }
@@ -47,15 +46,12 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
     setIsRotating(true);
     const rotateAmount = direction === 'clockwise' ? 30 : -30;
     setRotation(prev => prev + rotateAmount);
-    
-    // Stop rotation animation after completed
+
     setTimeout(() => {
       setIsRotating(false);
     }, 500);
   };
 
-  // Define button positions based on the sketch with symmetrical placement
-  // Place buttons at 0, 120, and 240 degrees for perfect symmetry
   const menuItems = [
     { label: "Python", icon: Code, angle: 0, onClick: () => handleTechnology('python') },
     { label: "C#", icon: FileCode, angle: 120, onClick: () => handleTechnology('csharp') },
@@ -66,8 +62,8 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
     <div className="circle-menu">
       {/* Large outer circle (main orbit) */}
       <div className="main-orbit" />
-      
-      {/* Menu buttons container - this rotates */}
+
+      {/* Container for rotating menu items */}
       <div 
         className={`menu-items-container ${isRotating ? 'rotating' : ''}`}
         style={{ transform: `rotate(${rotation}deg)` }}
@@ -78,18 +74,18 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
             label={item.label}
             icon={item.icon}
             angle={item.angle}
-            distance={230} // Increased distance to match sketch proportions
+            distance={230} // Increased distance to match proportions
             onClick={item.onClick}
             rotation={-rotation} // Counter-rotate the buttons to keep text upright
           />
         ))}
       </div>
-      
+
       {/* Central avatar container */}
       <div className="avatar-container">
         <Profile name="DEV" title="Game Developer" />
       </div>
-      
+
       {/* Rotation control buttons */}
       <div className="rotation-controls">
         <button 
