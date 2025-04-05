@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Icon } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
 
 interface MenuButtonProps {
@@ -27,7 +26,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({
   
   return (
     <button
-      className="menu-button w-24 h-24 flex flex-col items-center justify-center hover:bg-dark-bg"
+      className="menu-button"
       style={{
         transform: `translate(${x}px, ${y}px) rotate(${rotation}deg)`,
         transition: 'transform 0.5s ease-in-out',
@@ -36,7 +35,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({
       aria-label={label}
     >
       <IconComponent className="text-turquoise mb-1" size={28} />
-      <span className="menu-text text-sm">{label}</span>
+      <span className="menu-text">{label}</span>
     </button>
   );
 };

@@ -59,11 +59,12 @@
   }
 
   .menu-button {
-    @apply absolute flex items-center justify-center rounded-full bg-dark-card border-2 border-turquoise shadow-lg shadow-turquoise/20 transition-all duration-300 hover:scale-110 hover:shadow-turquoise/40;
+    @apply absolute flex flex-col items-center justify-center w-24 h-24 rounded-full bg-dark-card border-2 border-turquoise shadow-lg shadow-turquoise/20 transition-all duration-300 hover:scale-110 hover:shadow-turquoise/40 hover:bg-dark-bg z-10;
   }
 
-  .avatar-container {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-dark-card border-4 border-turquoise shadow-xl shadow-turquoise/30 overflow-hidden z-10;
+  /* Central avatar container styles */
+  .avatar-circle {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-dark-card border-4 border-turquoise shadow-xl shadow-turquoise/30 overflow-hidden z-20;
   }
 
   .menu-text {
@@ -85,6 +86,19 @@
 
   .rotate-btn {
     @apply w-12 h-12 rounded-full bg-dark-card border-2 border-turquoise text-turquoise flex items-center justify-center text-xl hover:bg-dark-bg/80 transition-all hover:scale-110;
+  }
+
+  /* Orbit circle styles */
+  .circle-orbit {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-turquoise/20;
+  }
+  
+  .outer-orbit {
+    @apply w-[450px] h-[450px] animate-rotate-slow;
+  }
+  
+  .inner-orbit {
+    @apply w-[350px] h-[350px] border-turquoise/10;
   }
 
   /* For the animated background */

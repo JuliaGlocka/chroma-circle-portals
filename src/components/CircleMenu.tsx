@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MenuButton from './MenuButton';
 import Profile from './Profile';
 import { Code, FileCode, Gamepad2 } from 'lucide-react';
@@ -54,17 +54,19 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
     }, 500);
   };
 
-  // Define button positions with angles
+  // Define button positions with angles evenly distributed around the circle
   const menuItems = [
-    { label: "Python", icon: Code, angle: 270, onClick: () => handleTechnology('python') },
-    { label: "C#", icon: FileCode, angle: 30, onClick: () => handleTechnology('csharp') },
-    { label: "Unity", icon: Gamepad2, angle: 150, onClick: () => handleTechnology('unity') },
+    { label: "Python", icon: Code, angle: 0, onClick: () => handleTechnology('python') },
+    { label: "C#", icon: FileCode, angle: 120, onClick: () => handleTechnology('csharp') },
+    { label: "Unity", icon: Gamepad2, angle: 240, onClick: () => handleTechnology('unity') },
   ];
 
   return (
     <div className="circle-menu animate-float">
-      {/* Center profile avatar */}
-      <Profile name="DEV" title="Game Developer" />
+      {/* Central avatar container */}
+      <div className="avatar-circle">
+        <Profile name="DEV" title="Game Developer" />
+      </div>
       
       {/* Menu buttons positioned in a circle */}
       <div 
@@ -77,7 +79,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
             label={item.label}
             icon={item.icon}
             angle={item.angle}
-            distance={180}
+            distance={200} // Increased distance to position buttons further from center
             onClick={item.onClick}
             rotation={-rotation} // Counter-rotate the buttons to keep text upright
           />
@@ -102,9 +104,9 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
         </button>
       </div>
       
-      {/* Decorative circles */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-turquoise/20 animate-rotate-slow" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full border border-turquoise/10" />
+      {/* Decorative orbit circles */}
+      <div className="circle-orbit outer-orbit" />
+      <div className="circle-orbit inner-orbit" />
     </div>
   );
 };
