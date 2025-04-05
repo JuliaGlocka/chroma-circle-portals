@@ -54,7 +54,8 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
     }, 500);
   };
 
-  // Define button positions with angles evenly distributed around the circle
+  // Define button positions based on the sketch with symmetrical placement
+  // Place buttons at 0, 120, and 240 degrees for perfect symmetry
   const menuItems = [
     { label: "Python", icon: Code, angle: 0, onClick: () => handleTechnology('python') },
     { label: "C#", icon: FileCode, angle: 120, onClick: () => handleTechnology('csharp') },
@@ -62,12 +63,11 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
   ];
 
   return (
-    <div className="circle-menu animate-float">
-      {/* Outer decorative orbits */}
-      <div className="circle-orbit outer-orbit" />
-      <div className="circle-orbit inner-orbit" />
+    <div className="circle-menu">
+      {/* Large outer circle (main orbit) */}
+      <div className="main-orbit" />
       
-      {/* Menu buttons positioned in a circle */}
+      {/* Menu buttons container - this rotates */}
       <div 
         className={`menu-items-container ${isRotating ? 'rotating' : ''}`}
         style={{ transform: `rotate(${rotation}deg)` }}
@@ -78,7 +78,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
             label={item.label}
             icon={item.icon}
             angle={item.angle}
-            distance={180} // Distance from center to button
+            distance={230} // Increased distance to match sketch proportions
             onClick={item.onClick}
             rotation={-rotation} // Counter-rotate the buttons to keep text upright
           />
@@ -86,7 +86,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
       </div>
       
       {/* Central avatar container */}
-      <div className="avatar-circle">
+      <div className="avatar-container">
         <Profile name="DEV" title="Game Developer" />
       </div>
       
@@ -94,14 +94,14 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
       <div className="rotation-controls">
         <button 
           onClick={() => rotateMenu('counterclockwise')}
-          className="rotate-btn rotate-left"
+          className="rotate-btn"
           aria-label="Rotate menu counterclockwise"
         >
           ⟲
         </button>
         <button 
           onClick={() => rotateMenu('clockwise')}
-          className="rotate-btn rotate-right"
+          className="rotate-btn"
           aria-label="Rotate menu clockwise"
         >
           ⟳

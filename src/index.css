@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,16 +54,16 @@
   }
   
   .circle-menu {
-    @apply relative w-[500px] h-[500px] md:w-[600px] md:h-[600px];
+    @apply relative w-[500px] h-[500px] md:w-[600px] md:h-[600px] flex items-center justify-center animate-float;
   }
 
   .menu-button {
-    @apply absolute flex flex-col items-center justify-center w-20 h-20 rounded-full bg-dark-card border-2 border-turquoise shadow-lg shadow-turquoise/20 transition-all duration-300 hover:scale-110 hover:shadow-turquoise/40 hover:bg-dark-bg z-10;
+    @apply absolute flex flex-col items-center justify-center w-28 h-28 rounded-full bg-dark-card border-2 border-turquoise shadow-lg shadow-turquoise/20 transition-all duration-300 hover:scale-110 hover:shadow-turquoise/40 hover:bg-dark-bg z-10;
   }
 
   /* Central avatar container styles */
-  .avatar-circle {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-dark-card border-4 border-turquoise shadow-xl shadow-turquoise/30 overflow-hidden z-20;
+  .avatar-container {
+    @apply absolute w-36 h-36 rounded-full bg-dark-card border-4 border-turquoise shadow-xl shadow-turquoise/30 overflow-hidden z-20;
   }
 
   .menu-text {
@@ -80,6 +79,11 @@
     @apply transition-transform duration-500 ease-in-out;
   }
 
+  /* Main orbit - the large circle that visually connects all menu buttons */
+  .main-orbit {
+    @apply absolute w-[460px] h-[460px] rounded-full border border-turquoise/30 z-0;
+  }
+
   .rotation-controls {
     @apply absolute bottom-0 left-1/2 -translate-x-1/2 flex space-x-6 z-20 mb-4;
   }
@@ -87,20 +91,7 @@
   .rotate-btn {
     @apply w-12 h-12 rounded-full bg-dark-card border-2 border-turquoise text-turquoise flex items-center justify-center text-xl hover:bg-dark-bg/80 transition-all hover:scale-110;
   }
-
-  /* Orbit circle styles */
-  .circle-orbit {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-turquoise/20;
-  }
   
-  .outer-orbit {
-    @apply w-[400px] h-[400px] animate-rotate-slow;
-  }
-  
-  .inner-orbit {
-    @apply w-[300px] h-[300px] border-turquoise/10;
-  }
-
   /* For the animated background */
   .code-particle {
     @apply absolute text-xs md:text-sm text-turquoise/20 pointer-events-none select-none font-mono;

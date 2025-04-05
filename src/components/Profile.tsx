@@ -10,7 +10,7 @@ const Profile: React.FC<ProfileProps> = ({ name, title }) => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full bg-gradient-to-br from-dark-bg to-dark-card animate-pulse-soft">
       {/* Circular avatar with initials */}
-      <div className="w-16 h-16 rounded-full bg-dark-bg flex items-center justify-center border-2 border-turquoise">
+      <div className="w-24 h-24 rounded-full bg-dark-bg flex items-center justify-center border-2 border-turquoise">
         <span className="text-3xl font-bold text-turquoise">{name.charAt(0)}</span>
       </div>
       
