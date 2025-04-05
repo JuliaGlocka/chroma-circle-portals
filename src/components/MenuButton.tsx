@@ -34,7 +34,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({
       onClick={onClick}
       aria-label={label}
     >
-      <IconComponent className="text-turquoise mb-1" size={28} />
+      <IconComponent className="text-turquoise mb-1" size={24} />
       <span className="menu-text">{label}</span>
     </button>
   );

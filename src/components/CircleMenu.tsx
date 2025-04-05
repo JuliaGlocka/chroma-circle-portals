@@ -63,10 +63,9 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
 
   return (
     <div className="circle-menu animate-float">
-      {/* Central avatar container */}
-      <div className="avatar-circle">
-        <Profile name="DEV" title="Game Developer" />
-      </div>
+      {/* Outer decorative orbits */}
+      <div className="circle-orbit outer-orbit" />
+      <div className="circle-orbit inner-orbit" />
       
       {/* Menu buttons positioned in a circle */}
       <div 
@@ -79,11 +78,16 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
             label={item.label}
             icon={item.icon}
             angle={item.angle}
-            distance={200} // Increased distance to position buttons further from center
+            distance={180} // Distance from center to button
             onClick={item.onClick}
             rotation={-rotation} // Counter-rotate the buttons to keep text upright
           />
         ))}
+      </div>
+      
+      {/* Central avatar container */}
+      <div className="avatar-circle">
+        <Profile name="DEV" title="Game Developer" />
       </div>
       
       {/* Rotation control buttons */}
@@ -103,10 +107,6 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
           ⟳
         </button>
       </div>
-      
-      {/* Decorative orbit circles */}
-      <div className="circle-orbit outer-orbit" />
-      <div className="circle-orbit inner-orbit" />
     </div>
   );
 };
