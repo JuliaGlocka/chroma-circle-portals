@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import MenuButton from './MenuButton';
 import Profile from './Profile';
 import { Code, FileCode, Gamepad2 } from 'lucide-react';
-import './CircleMenu.css';
+import './CircleMenu.css';  // Importujemy plik CSS
 
 interface Project {
   id: string;
@@ -53,19 +52,11 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
     }, 500);
   };
 
-  // Calculate the distance for buttons based on viewport size
-  const calculateDistance = () => {
-    // Use a responsive approach based on the circle size
-    return 42; // This is now a percentage of the container
-  };
-
   const menuItems = [
     { label: "Python", icon: Code, angle: 0, onClick: () => handleTechnology('python') },
     { label: "C#", icon: FileCode, angle: 120, onClick: () => handleTechnology('csharp') },
     { label: "Unity", icon: Gamepad2, angle: 240, onClick: () => handleTechnology('unity') },
   ];
-
-  const distance = calculateDistance();
 
   return (
     <div className="circle-menu">
@@ -83,7 +74,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
             label={item.label}
             icon={item.icon}
             angle={item.angle}
-            distance={distance}
+            distance={230} // Increased distance to match proportions
             onClick={item.onClick}
             rotation={-rotation} // Counter-rotate the buttons to keep text upright
           />

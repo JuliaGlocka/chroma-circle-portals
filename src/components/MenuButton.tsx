@@ -21,9 +21,6 @@ const MenuButton: React.FC<MenuButtonProps> = ({
 }) => {
   // Calculate position based on angle and distance
   const radians = (angle * Math.PI) / 180;
-  
-  // Use percentages for responsive positioning
-  // Note: These calculations use percentages of the container
   const x = Math.cos(radians) * distance;
   const y = Math.sin(radians) * distance;
   
@@ -31,7 +28,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({
     <button
       className="menu-button"
       style={{
-        transform: `translate(${x}%, ${y}%) rotate(${rotation}deg)`,
+        transform: `translate(${x}px, ${y}px) rotate(${rotation}deg)`,
         transition: 'transform 0.5s ease-in-out',
       }}
       onClick={onClick}
