@@ -53,10 +53,9 @@ const CircleMenu: React.FC<CircleMenuProps> = ({ onSelectProject }) => {
     }, 500);
   };
 
-  // Calculate the distance for buttons based on viewport size
+  // Calculate the distance for buttons - exactly on the orbit circle
   const calculateDistance = () => {
-    // Use a responsive approach based on the circle size
-    return 42; // This is now a percentage of the container
+    return 42.5; // This places the buttons exactly on the middle orbit
   };
 
   const menuItems = [
