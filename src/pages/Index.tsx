@@ -3,19 +3,19 @@ import CircleMenu from '../components/CircleMenu';
 import ProjectCard from '../components/ProjectCard';
 import CodeBackground from '../components/Background';
 import { Github, Linkedin, Mail } from 'lucide-react';
+
 interface Project {
   id: string;
   title: string;
   description: string;
   technology: string;
 }
+
 const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   return <div className="min-h-screen flex flex-col relative">
-      {/* Animated background */}
       <CodeBackground />
       
-      {/* Header with social links */}
       <header className="fixed top-0 w-full p-4 z-20 flex justify-between items-center">
         <div className="text-turquoise font-bold text-xl">JGDev Portfolio</div>
         <div className="flex space-x-4">
@@ -31,7 +31,6 @@ const Index = () => {
         </div>
       </header>
       
-      {/* Main content */}
       <main className="flex-1 flex items-center justify-center">
         {selectedProject ? <div className="circle-menu-container">
             <ProjectCard project={selectedProject} onBack={() => setSelectedProject(null)} />
@@ -40,10 +39,10 @@ const Index = () => {
           </div>}
       </main>
       
-      {/* Footer */}
       <footer className="p-4 text-center text-white/60 text-sm">
-        © 2025 Game Developer Portfolio
+        © 2025 JG Developer Portfolio
       </footer>
     </div>;
 };
+
 export default Index;
