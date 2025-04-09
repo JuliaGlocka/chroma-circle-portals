@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import MenuButton from './MenuButton';
 import Profile from './Profile';
-import { Code, FileCode, Gamepad2 } from 'lucide-react';
+import { Code, FileCode, Gamepad2, TestTube2 } from 'lucide-react';
 import './CircleMenu.css'; // Importujemy plik CSS
 
 interface Project {
@@ -53,9 +54,20 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
       title: 'VR Experience',
       description: 'Virtual reality training simulation for industrial applications.',
       technology: 'Unity'
+    }],
+    testing: [{
+      id: 'test1',
+      title: 'Automated Test Suite',
+      description: 'Comprehensive automated testing framework for web applications.',
+      technology: 'Testing'
+    }, {
+      id: 'test2',
+      title: 'Performance Testing Tool',
+      description: 'Load and stress testing tool for evaluating application performance.',
+      technology: 'Testing'
     }]
   };
-  const handleTechnology = (tech: 'python' | 'csharp' | 'unity') => {
+  const handleTechnology = (tech: 'python' | 'csharp' | 'unity' | 'testing') => {
     if (projects[tech] && projects[tech].length > 0) {
       onSelectProject(projects[tech][0]);
     }
@@ -73,18 +85,23 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
   const menuItems = [{
     label: "Python",
     icon: Code,
-    angle: 0,
+    angle: 45,
     onClick: () => handleTechnology('python')
   }, {
     label: "C#",
     icon: FileCode,
-    angle: 120,
+    angle: 135,
     onClick: () => handleTechnology('csharp')
   }, {
     label: "Unity",
     icon: Gamepad2,
-    angle: 240,
+    angle: 225,
     onClick: () => handleTechnology('unity')
+  }, {
+    label: "Testing",
+    icon: TestTube2,
+    angle: 315,
+    onClick: () => handleTechnology('testing')
   }];
   return <div className="circle-menu bg-transparent">
       {/* Large outer circle (main orbit) */}
@@ -101,7 +118,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
 
       {/* Central avatar container */}
       <div className="avatar-container">
-        <Profile name="DEV" title="Game Developer" />
+        <Profile name="" title="" imagePath="/lovable-uploads/9ceb2a1f-aece-4ba4-9e4f-59252130eabb.png" />
       </div>
 
       {/* Rotation control buttons */}
