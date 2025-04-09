@@ -3,21 +3,19 @@ import CircleMenu from '../components/CircleMenu';
 import ProjectCard from '../components/ProjectCard';
 import CodeBackground from '../components/Background';
 import { Github, Linkedin, Mail } from 'lucide-react';
-
 interface Project {
   id: string;
   title: string;
   description: string;
   technology: string;
 }
-
 const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   return <div className="min-h-screen flex flex-col relative">
       <CodeBackground />
       
       <header className="fixed top-0 w-full p-4 z-20 flex justify-between items-center">
-        <div className="text-turquoise font-bold text-xl">JGDev Portfolio</div>
+        <div className="text-turquoise font-bold text-xl">JG Dev Portfolio</div>
         <div className="flex space-x-4">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-turquoise transition-colors">
             <Github size={20} />
@@ -44,5 +42,4 @@ const Index = () => {
       </footer>
     </div>;
 };
-
 export default Index;
