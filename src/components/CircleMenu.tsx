@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import MenuButton from './MenuButton';
 import Profile from './Profile';
@@ -112,8 +113,8 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
       const dx = e.clientX - lastPosition.current.x;
       const dy = e.clientY - lastPosition.current.y;
       
-      // Calculate rotation based on drag direction and angle
-      const angle = calculateRotationAngle(dx, dy);
+      // Calculate rotation based on drag direction and angle with increased sensitivity
+      const angle = calculateRotationAngle(dx, dy) * 2.5; // Increased sensitivity multiplier
       setRotation(prev => prev + angle);
       
       lastPosition.current = { x: e.clientX, y: e.clientY };
@@ -125,8 +126,8 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
       const dx = e.touches[0].clientX - lastPosition.current.x;
       const dy = e.touches[0].clientY - lastPosition.current.y;
       
-      // Calculate rotation based on drag direction and angle
-      const angle = calculateRotationAngle(dx, dy);
+      // Calculate rotation based on drag direction and angle with increased sensitivity
+      const angle = calculateRotationAngle(dx, dy) * 2.5; // Increased sensitivity multiplier
       setRotation(prev => prev + angle);
       
       lastPosition.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
