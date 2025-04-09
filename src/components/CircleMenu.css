@@ -35,7 +35,7 @@
 
 .rotation-controls {
   position: absolute;
-  bottom: -80px;
+  bottom: -160px; /* Changed from -80px to -160px to double the distance */
   display: flex;
   justify-content: center;
   gap: 20px;
