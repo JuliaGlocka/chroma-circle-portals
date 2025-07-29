@@ -51,28 +51,18 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
     }],
     unity: [{
       id: 'un1',
-      title: '2D Platformer Game',
-      description: 'Side-scrolling adventure game with procedural level generation.',
-      technology: 'Unity'
-    }, {
-      id: 'un2',
-      title: 'VR Experience',
-      description: 'Virtual reality training simulation for industrial applications.',
+      title: '3D Run-and-Jump Game for Children',
+      description: `Co-developed a 3D platformer game designed for young children, featuring immersive environments, five thematic worlds, and increasing difficulty across five levels. My primary responsibility was level design and development, including terrain sculpting, obstacle layout, and gameplay pacing. I also contributed to UI integration and scripted some behavioral elements using C#. The game was successfully ported to Nintendo Switch.`,
       technology: 'Unity'
     }],
     testing: [{
       id: 'test1',
-      title: 'Automated Test Suite',
-      description: 'Comprehensive automated testing framework for web applications.',
-      technology: 'Testing'
-    }, {
-      id: 'test2',
-      title: 'Performance Testing Tool',
-      description: 'Load and stress testing tool for evaluating application performance.',
-      technology: 'Testing'
+      title: 'SwagLab Automated Test Suite',
+      description: 'Selenium-based test automation framework built with C#, xUnit, and Page Object Model. Supports cross-browser testing, parallel execution, detailed logging via log4net, and flexible browser configuration through appsettings.json. Designed for robust and maintainable UI regression testing.',
+      technology: 'C#, Selenium, xUnit, log4net'
     }]
   };
-  
+
   const handleTechnology = (tech: 'python' | 'csharp' | 'unity' | 'testing') => {
     if (projects[tech] && projects[tech].length > 0) {
       onSelectProject(projects[tech][0]);
@@ -88,81 +78,81 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
       setIsRotating(false);
     }, 500);
   };
-  
+
   // Setup drag event handlers
   useEffect(() => {
     const menuElement = menuRef.current;
     if (!menuElement) return;
-    
+
     const handleMouseDown = (e: MouseEvent) => {
       isDragging.current = true;
       lastPosition.current = { x: e.clientX, y: e.clientY };
       menuElement.style.cursor = 'grabbing';
     };
-    
+
     const handleTouchStart = (e: TouchEvent) => {
       if (e.touches.length === 1) {
         isDragging.current = true;
         lastPosition.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       }
     };
-    
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging.current) return;
-      
+
       const dx = e.clientX - lastPosition.current.x;
       const dy = e.clientY - lastPosition.current.y;
-      
+
       // Calculate rotation based on drag direction and angle with increased sensitivity
       const angle = calculateRotationAngle(dx, dy) * 2.5; // Increased sensitivity multiplier
       setRotation(prev => prev + angle);
-      
+
       lastPosition.current = { x: e.clientX, y: e.clientY };
     };
-    
+
     const handleTouchMove = (e: TouchEvent) => {
       if (!isDragging.current || e.touches.length !== 1) return;
-      
+
       const dx = e.touches[0].clientX - lastPosition.current.x;
       const dy = e.touches[0].clientY - lastPosition.current.y;
-      
+
       // Calculate rotation based on drag direction and angle with increased sensitivity
       const angle = calculateRotationAngle(dx, dy) * 2.5; // Increased sensitivity multiplier
       setRotation(prev => prev + angle);
-      
+
       lastPosition.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
     };
-    
+
     const handleMouseUp = () => {
       isDragging.current = false;
       menuElement.style.cursor = 'grab';
     };
-    
+
     const handleTouchEnd = () => {
       isDragging.current = false;
     };
-    
+
     // Calculate rotation angle based on drag movement
     const calculateRotationAngle = (dx: number, dy: number): number => {
       // Get center of the menu
       const rect = menuElement.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      
+
       // Calculate angle from center to previous and current points
       const previousAngle = Math.atan2(
-        lastPosition.current.y - centerY, 
+        lastPosition.current.y - centerY,
         lastPosition.current.x - centerX
       );
       const currentAngle = Math.atan2(
-        lastPosition.current.y + dy - centerY, 
+        lastPosition.current.y + dy - centerY,
         lastPosition.current.x + dx - centerX
       );
-      
+
       // Convert to degrees
       return ((currentAngle - previousAngle) * 180) / Math.PI;
     };
-    
+
     // Add event listeners
     menuElement.addEventListener('mousedown', handleMouseDown);
     menuElement.addEventListener('touchstart', handleTouchStart, { passive: true });
@@ -170,7 +160,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
     window.addEventListener('touchmove', handleTouchMove, { passive: false });
     window.addEventListener('mouseup', handleMouseUp);
     window.addEventListener('touchend', handleTouchEnd);
-    
+
     // Cleanup
     return () => {
       menuElement.removeEventListener('mousedown', handleMouseDown);
@@ -181,7 +171,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
       window.removeEventListener('touchend', handleTouchEnd);
     };
   }, []);
-  
+
   const menuItems = [{
     label: "Python",
     icon: Code,
@@ -203,10 +193,10 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
     angle: 315,
     onClick: () => handleTechnology('testing')
   }];
-  
+
   return (
     <div className="circle-menu-wrapper">
-      <div 
+      <div
         ref={menuRef}
         className="circle-menu bg-transparent"
         style={{ cursor: 'grab' }}
@@ -219,7 +209,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
           transform: `rotate(${rotation}deg)`
         }}>
           {menuItems.map((item, index) => <MenuButton key={index} label={item.label} icon={item.icon} angle={item.angle} distance={isMobile ? 160 : 230} // Adjust distance based on screen size
-          onClick={item.onClick} rotation={-rotation} // Counter-rotate the buttons to keep text upright
+            onClick={item.onClick} rotation={-rotation} // Counter-rotate the buttons to keep text upright
           />)}
         </div>
 
@@ -228,7 +218,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
           <Profile name="" title="" imagePath="/lovable-uploads/9ceb2a1f-aece-4ba4-9e4f-59252130eabb.png" />
         </div>
       </div>
-      
+
       {/* Rotation control buttons - now outside the circle */}
       <div className="rotation-controls">
         <button onClick={() => rotateMenu('counterclockwise')} className="rotate-btn" aria-label="Rotate menu counterclockwise">
