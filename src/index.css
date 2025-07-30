@@ -40,7 +40,7 @@
   }
 
   body {
-    @apply bg-dark-bg text-foreground antialiased overflow-x-hidden;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
   }
 
   html, body, #root {
@@ -66,16 +66,16 @@
   }
 
   .menu-button {
-    @apply absolute flex flex-col items-center justify-center w-28 h-28 rounded-full bg-dark-card border-2 border-turquoise shadow-lg shadow-turquoise/20 transition-all duration-300 hover:scale-110 hover:shadow-turquoise/40 hover:bg-dark-bg z-10;
+    @apply absolute flex flex-col items-center justify-center w-28 h-28 rounded-full bg-card border-2 border-primary shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-110 hover:shadow-primary/40 hover:bg-background z-10;
   }
 
   /* Central avatar container styles */
   .avatar-container {
-    @apply absolute w-36 h-36 rounded-full bg-dark-card border-4 border-turquoise shadow-xl shadow-turquoise/30 overflow-hidden z-20;
+    @apply absolute w-36 h-36 rounded-full bg-card border-4 border-primary shadow-xl shadow-primary/30 overflow-hidden z-20;
   }
 
   .menu-text {
-    @apply font-bold text-sm text-turquoise;
+    @apply font-bold text-sm text-primary;
   }
 
   /* Menu rotation related styles */
@@ -89,7 +89,7 @@
 
   /* Main orbit - the large circle that visually connects all menu buttons */
   .main-orbit {
-    @apply absolute w-[460px] h-[460px] rounded-full border border-turquoise/30 z-0;
+    @apply absolute w-[460px] h-[460px] rounded-full border border-primary/30 z-0;
   }
 
   .rotation-controls {
@@ -97,12 +97,12 @@
   }
 
   .rotate-btn {
-    @apply w-12 h-12 rounded-full bg-dark-card border-2 border-turquoise text-turquoise flex items-center justify-center text-xl hover:bg-dark-bg/80 transition-all hover:scale-110;
+    @apply w-12 h-12 rounded-full bg-card border-2 border-primary text-primary flex items-center justify-center text-xl hover:bg-background/80 transition-all hover:scale-110;
   }
   
   /* For the animated background */
   .code-particle {
-    @apply absolute text-xs md:text-sm text-turquoise/20 pointer-events-none select-none font-mono;
+    @apply absolute text-xs md:text-sm text-primary/20 pointer-events-none select-none font-mono;
   }
 
   @media (max-height: 700px) {
