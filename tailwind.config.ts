@@ -53,10 +53,10 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Custom colors
-				turquoise: '#7DEAB0',
-				'dark-bg': '#0F172A',
-				'dark-card': '#1E293B',
+				// Custom colors - using HSL format for consistency
+				turquoise: 'hsl(152, 74%, 70%)',
+				'dark-bg': 'hsl(217, 33%, 17%)',
+				'dark-card': 'hsl(222, 47%, 11%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
