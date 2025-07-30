@@ -1,5 +1,15 @@
 {
   "name": "vite_react_shadcn_ts",
+  "homepage": "https://juliaglocka.github.io/devjuliaglocka",
+  "description": "A Vite + React + TypeScript template with shadcn/ui components.",
+  "keywords": [
+    "vite",
+    "react",
+    "typescript",
+    "shadcn",
+    "ui",
+    "template"
+  ],
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +19,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "deploy:dev": "gh-pages -d dist --branch gh-pages-dev",
     "postbuild": "cp dist/index.html dist/404.html"
