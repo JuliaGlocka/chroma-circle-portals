@@ -29,9 +29,9 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
   const projects: Record<string, Project[]> = {
     python: [{
       id: 'py1',
-      title: 'Data Visualization Tool',
-      description: 'An interactive data visualization dashboard using Python and Dash.',
-      technology: 'Python'
+      title: 'Authentication System',
+      description: 'simple authentication system built using Python. The system allows users to sign up and log in securely using email and password authentication. The project incorporates encryption and hashing techniques to protect sensitive data, and uses PostgreSQL to store user credentials instead of a text file',
+      technology: 'Python, Fernet, bycrypt salt, UUID, psycopg2'
     }, {
       id: 'py2',
       title: 'Machine Learning API',
@@ -51,8 +51,8 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
     }],
     unity: [{
       id: 'un1',
-      title: '2D Platformer Game',
-      description: 'Side-scrolling adventure game with procedural level generation.',
+      title: '3D Run-and-Jump Game for Children',
+      description: 'Co-developed a 3D platformer game designed for young children, featuring immersive environments, five thematic worlds, and increasing difficulty across five levels. My primary responsibility was level design and development, including terrain sculpting, obstacle layout, and gameplay pacing. I also contributed to UI integration and scripted some behavioral elements using C#. The game was successfully ported to Nintendo Switch.',
       technology: 'Unity'
     }, {
       id: 'un2',
@@ -63,8 +63,8 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
     testing: [{
       id: 'test1',
       title: 'Automated Test Suite',
-      description: 'Comprehensive automated testing framework for web applications.',
-      technology: 'Testing'
+      description: 'Selenium-based test automation framework built with C#, xUnit, and Page Object Model. Supports cross-browser testing, parallel execution, detailed logging via log4net, and flexible browser configuration through appsettings.json. Designed for robust and maintainable UI regression testing.',
+      technology: 'C#, Selenium, xUnit, log4net'
     }, {
       id: 'test2',
       title: 'Performance Testing Tool',
