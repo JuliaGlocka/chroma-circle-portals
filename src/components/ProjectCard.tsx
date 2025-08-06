@@ -7,6 +7,8 @@ interface Project {
   title: string;
   description: string;
   technology: string;
+  liveUrl?: string;
+  sourceUrl?: string;
 }
 
 interface ProjectCardProps {
@@ -37,13 +39,44 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onBack }) => {
       <p className="text-gray-300 mb-6">{project.description}</p>
       
       <div className="grid grid-cols-2 gap-4">
-        <button className="bg-turquoise hover:bg-turquoise/80 text-dark-bg font-bold py-2 px-4 rounded-lg transition-colors">
-          View Project
-        </button>
-        <button className="border border-turquoise text-turquoise hover:bg-turquoise/10 font-bold py-2 px-4 rounded-lg transition-colors">
-          Source Code
-        </button>
-      </div>
+        
+  {project.liveUrl ? (
+    <a
+      href={project.liveUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-turquoise hover:bg-turquoise/80 text-dark-bg font-bold py-2 px-4 rounded-lg transition-colors text-center"
+    >
+      View Project
+    </a>
+  ) : (
+    <button
+      disabled
+      className="bg-gray-300 text-gray-500 font-bold py-2 px-4 rounded-lg transition-colors text-center cursor-not-allowed opacity-50"
+    >
+      View Project
+    </button>
+  )}
+
+  {project.sourceUrl ? (
+    <a
+      href={project.sourceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="border border-turquoise text-turquoise hover:bg-turquoise/10 font-bold py-2 px-4 rounded-lg transition-colors text-center"
+    >
+      Source Code
+    </a>
+  ) : (
+    <button
+      disabled
+      className="border border-gray-300 text-gray-500 font-bold py-2 px-4 rounded-lg text-center cursor-not-allowed opacity-50"
+    >
+      Source Code
+    </button>
+  )}
+</div>
+
       
       <div className="mt-6">
         <h3 className="text-white font-semibold mb-2">Technologies</h3>

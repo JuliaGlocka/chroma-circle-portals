@@ -10,8 +10,11 @@ interface Project {
   id: string;
   title: string;
   description: string;
-  technology: string;
+  technologies: string[];
+  sourceUrl?: string; // GitHub lub inne repo
+  liveUrl?: string;   // Link do działającej wersji (jeśli istnieje)
 }
+
 interface CircleMenuProps {
   onSelectProject: (project: Project) => void;
 }
@@ -31,45 +34,46 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
       id: 'py1',
       title: 'Authentication System',
       description: 'simple authentication system built using Python. The system allows users to sign up and log in securely using email and password authentication. The project incorporates encryption and hashing techniques to protect sensitive data, and uses PostgreSQL to store user credentials instead of a text file',
-      technology: 'Python, Fernet, bycrypt salt, UUID, psycopg2'
+      technologies: ['Python', 'Fernet', 'bcrypt salt', 'UUID', 'psycopg2']
     }, {
       id: 'py2',
       title: 'Machine Learning API',
       description: 'REST API for image classification using PyTorch and FastAPI.',
-      technology: 'Python'
+      technologies: ['Python']
     }],
     csharp: [{
       id: 'cs1',
       title: 'Enterprise Web App',
       description: 'Full-stack web application built with ASP.NET Core and Angular.',
-      technology: 'C#'
+      technologies: ['C#']
     }, {
       id: 'cs2',
       title: 'Desktop Utility Tool',
       description: 'Windows desktop application for file management and processing.',
-      technology: 'C#'
+      technologies: ['C#']
     }],
     unity: [{
       id: 'un1',
       title: '3D Run-and-Jump Game for Children',
       description: 'Co-developed a 3D platformer game designed for young children, featuring immersive environments, five thematic worlds, and increasing difficulty across five levels. My primary responsibility was level design and development, including terrain sculpting, obstacle layout, and gameplay pacing. I also contributed to UI integration and scripted some behavioral elements using C#. The game was successfully ported to Nintendo Switch.',
-      technology: 'Unity'
+      technologies: ['Unity']
     }, {
       id: 'un2',
       title: 'VR Experience',
       description: 'Virtual reality training simulation for industrial applications.',
-      technology: 'Unity'
+      technologies: ['Unity']
     }],
     testing: [{
       id: 'test1',
       title: 'Automated Test Suite',
       description: 'Selenium-based test automation framework built with C#, xUnit, and Page Object Model. Supports cross-browser testing, parallel execution, detailed logging via log4net, and flexible browser configuration through appsettings.json. Designed for robust and maintainable UI regression testing.',
-      technology: 'C#, Selenium, xUnit, log4net'
+      technologies: ['C#', 'Selenium', 'xUnit', 'log4net'],
+      sourceUrl: 'https://github.com/JuliaGlocka/SwagLab'
     }, {
       id: 'test2',
       title: 'Performance Testing Tool',
       description: 'Load and stress testing tool for evaluating application performance.',
-      technology: 'Testing'
+      technologies: ['Testing']
     }]
   };
   
